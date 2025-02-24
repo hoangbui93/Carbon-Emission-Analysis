@@ -279,7 +279,7 @@ total_change AS (
 	END AS pcf_change
     FROM min_max
 )
-SELECT *,	   
+SELECT *,
        CASE 
           WHEN pcf_change > 0 THEN 'Increase 📈'
           WHEN pcf_change < 0 THEN 'Decrease 📉'
