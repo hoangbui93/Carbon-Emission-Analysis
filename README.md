@@ -41,6 +41,7 @@ limit 10
 | Electric Motor                                                                                                                     | 160655       | 
 | Audi A6                                                                                                                            | 111282       | 
 | Average of all GM vehicles produced and used in the 10 year life-cycle.                                                            | 100621       | 
+
 **Insights:**
 The data reveals that wind turbine production generates high CO2 emissions, with larger models like the G128 5MW (3.7 millions) and G132 5MW (3.2 millions) having the biggest footprint, though their long-term clean energy benefits outweigh initial emissions. Smaller turbines, like the G90 2MW (1.25 millions), produce significantly less. Traditional vehicles, such as the Land Cruiser Prado and Audi A6, contribute around 100,000 – 190,000 over their lifecycle, highlighting the environmental impact of fossil-fuel cars. Infrastructure projects, like retaining walls (167,000) and electric motors (160,655), also have substantial emissions, showing the need for greener construction and industrial solutions. The insights emphasize the importance of renewable energy adoption, low-emission transportation, and sustainable materials to reduce environmental impact.🌍
 
@@ -75,6 +76,7 @@ from
 | Wind Turbine G90 2 Megawats                                                                                                        | Electrical Equipment and Machinery | 
 | TCDE                                                                                                                               | Materials                          | 
 | Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall | Materials                          | 
+
 **Insights:**
 The top CO2-emitting products fall into four key industry groups: Electrical Equipment and Machinery, Automobiles & Components, Capital Goods, and Materials. Wind turbines produce the highest emissions during production, but they will have long-term clean energy benefits. Automobiles, including the Land Cruiser Prado, Audi A6, and GM vehicles, generate substantial emissions due to fuel consumption and production processes. Industrial equipment like electric motors and construction materials such as retaining wall structures also have significant carbon footprints, mainly from material extraction and heavy industrial processing.🌱
 
@@ -104,6 +106,7 @@ limit 10
 | Chemicals                                        | 62369        | 
 | Software & Services                              | 46544        | 
 | Media                                            | 23017        | 
+
 **Insights:**
 The industries with the highest CO2 emissions are Electrical Equipment and Machinery (9.8 millions), Automobiles & Components (2.58 millions), and Materials (577,595). The Electrical Equipment sector, driven by wind turbine production, has the largest footprint due to high material and manufacturing energy demands. The Automobile industry contributes significantly through vehicle production and fuel consumption, while Materials, including construction infrastructure, add further emissions from steel and concrete production. In contrast, industries like Technology Hardware, Pharmaceuticals, and Software have lower emissions, reflecting their less material-intensive production.🌍
 
@@ -127,6 +130,7 @@ limit 5`
 | Volkswagen AG                           | 655960       | 
 | "Mitsubishi Gas Chemical Company, Inc." | 212016       | 
 | "Hino Motors, Ltd."                     | 191687       | 
+
 **Insights:**
 The top five companies contributing the most to carbon emissions are Gamesa Corporación Tecnológica, S.A. (9.78 millions), Daimler AG (1.59 millions), Volkswagen AG (655,960), Mitsubishi Gas Chemical Company, Inc. (212,016), and Hino Motors, Ltd. (191,687). Gamesa, a wind turbine manufacturer, leads significantly due to high emissions from large-scale turbine production, despite its role in renewable energy. Daimler and Volkswagen, major automotive companies, contribute heavily from vehicle manufacturing and fuel-related emissions. Mitsubishi Gas Chemical and Hino Motors add to industrial and transportation emissions through chemical production and commercial vehicle manufacturing.🌱
 
@@ -239,7 +243,6 @@ limit 10`
 | Mercedes-Benz GLK-Class      | Daimler AG                             | Automobiles & Components           | Germany      | 48800        | 
 | Mercedes-Benz E-Class Saloon | Daimler AG                             | Automobiles & Components           | Germany      | 47200        | 
 
-
 **Insights:**
 - The data shows that carbon emissions spiked in 2015, reaching 10.84 million PCF, an increase of 1,636.62% compared to 2014. This peak was followed by a sharp decline in the following years, with emissions falling by 84.87% in 2016 and a further 79.25% in 2017, indicating a major change in manufacturing, policy or reporting.
 
@@ -247,7 +250,6 @@ limit 10`
 
 ### Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 Get industry groups has demonstrated the most notable decrease in carbon footprints (PCFs)
-
 
 **SQL:**
 `WITH pivot_pcf AS (
