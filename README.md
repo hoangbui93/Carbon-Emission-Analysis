@@ -274,13 +274,13 @@ min_max AS (
 total_change AS (
     SELECT DISTINCT industry_group, max_pcf_year, max_pcf, min_pcf_year, min_pcf,
         CASE WHEN min_pcf_year < max_pcf_year then max_pcf - min_pcf
-	         WHEN min_pcf_year > max_pcf_year then min_pcf - max_pcf
-	         ELSE 0
-	    END AS pcf_change
+	     WHEN min_pcf_year > max_pcf_year then min_pcf - max_pcf
+	     ELSE 0
+	END AS pcf_change
     FROM min_max
 )
 SELECT *,	   
-	   CASE 
+       CASE 
           WHEN pcf_change > 0 THEN 'Increase 📈'
           WHEN pcf_change < 0 THEN 'Decrease 📉'
           ELSE 'No Change ➡️'
