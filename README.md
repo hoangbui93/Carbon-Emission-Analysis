@@ -156,8 +156,37 @@ limit 10`
 | Taiwan       | 62875        | 
 | India        | 24574        | 
 
-**Insights:**
+**SQL:**
+`select product_name,
+       company_name,
+	   industry_group,
+       country_name,
+       sum(carbon_footprint_pcf) as CO2_emission
+from product_emissions pe
+    join companies c1 on c1.id = pe.company_id
+    join countries c2 on c2.id = pe.country_id
+	join industry_groups ig on ig.id = pe.industry_group_id
+where country_name = 'Spain'
+group by product_name, company_name, industry_group, country_name
+order by sum(carbon_footprint_pcf) desc
+limit 10`
 
+**Result:**
+| product_name                 | company_name                                   | industry_group                     | country_name | CO2_emission | 
+| ---------------------------: | ---------------------------------------------: | ---------------------------------: | -----------: | -----------: | 
+| Wind Turbine G128 5 Megawats | "Gamesa Corporación Tecnológica, S.A."         | Electrical Equipment and Machinery | Spain        | 3718044      | 
+| Wind Turbine G132 5 Megawats | "Gamesa Corporación Tecnológica, S.A."         | Electrical Equipment and Machinery | Spain        | 3276187      | 
+| Wind Turbine G114 2 Megawats | "Gamesa Corporación Tecnológica, S.A."         | Electrical Equipment and Machinery | Spain        | 1532608      | 
+| Wind Turbine G90 2 Megawats  | "Gamesa Corporación Tecnológica, S.A."         | Electrical Equipment and Machinery | Spain        | 1251625      | 
+| Lineal Alkyl Bencene (LAB)   | "Compañía Española de Petróleos, S.A.U. CEPSA" | Energy                             | Spain        | 6999         | 
+| Sodium sulphate              | Crimidesa                                      | Chemicals                          | Spain        | 180          | 
+| Diced tomato                 | Agraz                                          | "Food, Beverage & Tobacco"         | Spain        | 156          | 
+| Tomato paste                 | Agraz                                          | "Food, Beverage & Tobacco"         | Spain        | 156          | 
+| sodium sulphate              | Crimidesa                                      | Materials                          | Spain        | 140          | 
+| Tomato powder                | Agraz                                          | "Food, Beverage & Tobacco"         | Spain        | 16           | 
+
+**Insights:**
+Spain is the highest contributor to carbon emissions, with a significantly larger footprint (9,786,130) compared to other countries. A deep dive into Spain's emissions sources reveals that Gamesa Corporación Tecnológica, S.A. is the primary contributor, with its wind turbine products collectively accounting for the vast majority of Spain’s emissions (over 9.7 million PCF). This suggests that renewable energy equipment manufacturing, particularly wind turbines, has a substantial carbon footprint in the production phase. Other industries in Spain, such as Energy, Chemicals, Food & Beverage,... contribute relatively minor amounts to total emissions. While the presence of clean energy manufacturing is prominent, its high carbon footprint highlights the embedded emissions in producing large-scale wind energy equipment.
 
 ### What is the trend of carbon footprints (PCFs) over the years?
 Carbon footprint (PCF) trend changes year over year
@@ -181,70 +210,121 @@ from cte`
 | 2016 | 1640182      | 10840415              | -84.87    | 
 | 2017 | 340271       | 1640182               | -79.25    | 
 
+**SQL:**
+`select product_name,
+       company_name,
+	   industry_group,
+       country_name,
+       sum(carbon_footprint_pcf) as CO2_emission
+from product_emissions pe
+    join companies c1 on c1.id = pe.company_id
+    join countries c2 on c2.id = pe.country_id
+	join industry_groups ig on ig.id = pe.industry_group_id
+where year = 2015
+group by product_name, company_name, industry_group, country_name
+order by sum(carbon_footprint_pcf) desc
+limit 10`
+
+**Result:**
+| product_name                 | company_name                           | industry_group                     | country_name | CO2_emission | 
+| ---------------------------: | -------------------------------------: | ---------------------------------: | -----------: | -----------: | 
+| Wind Turbine G128 5 Megawats | "Gamesa Corporación Tecnológica, S.A." | Electrical Equipment and Machinery | Spain        | 3718044      | 
+| Wind Turbine G132 5 Megawats | "Gamesa Corporación Tecnológica, S.A." | Electrical Equipment and Machinery | Spain        | 3276187      | 
+| Wind Turbine G114 2 Megawats | "Gamesa Corporación Tecnológica, S.A." | Electrical Equipment and Machinery | Spain        | 1532608      | 
+| Wind Turbine G90 2 Megawats  | "Gamesa Corporación Tecnológica, S.A." | Electrical Equipment and Machinery | Spain        | 1251625      | 
+| Mercedes-Benz SL-Class       | Daimler AG                             | Automobiles & Components           | Germany      | 69000        | 
+| Mercedes-Benz CLS-Class      | Daimler AG                             | Automobiles & Components           | Germany      | 57100        | 
+| Mercedes-Benz S-Class        | Daimler AG                             | Automobiles & Components           | Germany      | 54000        | 
+| Mercedes-Benz C-Class        | Daimler AG                             | Automobiles & Components           | Germany      | 50500        | 
+| Mercedes-Benz GLK-Class      | Daimler AG                             | Automobiles & Components           | Germany      | 48800        | 
+| Mercedes-Benz E-Class Saloon | Daimler AG                             | Automobiles & Components           | Germany      | 47200        | 
+
+
 **Insights:**
-The carbon footprint (PCF) trend shows a sharp increase from 2013 to 2015, with emissions rising from 503,857 to 10.84 millions PCF in 2015 (+1,636.62%). However, from 2016 onward, there is a drastic decline, dropping -84.87% in 2016 and another -79.25% in 2017, reaching 340,271. This pattern suggests a major expansion phase followed by significant reductions, possibly due to policy changes, shifts in industrial production, or improved sustainability measures. Understanding the cause of these fluctuations is crucial for sustaining long-term emsustaining long-term emission reductions.🌍
+- The data shows that carbon emissions spiked in 2015, reaching 10.84 million PCF, an increase of 1,636.62% compared to 2014. This peak was followed by a sharp decline in the following years, with emissions falling by 84.87% in 2016 and a further 79.25% in 2017, indicating a major change in manufacturing, policy or reporting.
+
+- As discussed above, Spanish wind turbine manufacturing, specifically from Gamesa Corporación Tecnológica, SA, was the main contributor to the increase in emissions in 2015. In addition, the German automotive industry, particularly the production of luxury vehicles by Daimler AG, also contributed to emissions, albeit on a significantly smaller scale than wind turbine manufacturing. This highlights that renewable energy equipment manufacturing and high-end car manufacturing were the main drivers of emissions in 2015, before emissions fell sharply in subsequent years.
 
 ### Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 
 
 **SQL:**
-`WITH Yearly_Emissions AS (
-    SELECT 
-        ig.industry_group,
-        pe.year,
-        SUM(pe.carbon_footprint_pcf) AS total_pcf
+`WITH pivot_pcf AS (
+    SELECT industry_group, year, SUM(carbon_footprint_pcf) AS pcf
     FROM product_emissions pe
-    JOIN industry_groups ig ON pe.industry_group_id = ig.id
-    GROUP BY ig.industry_group, pe.year
+    JOIN industry_groups ig
+       ON pe.industry_group_id = ig.id
+    WHERE year BETWEEN 2013 AND 2017
+    GROUP BY industry_group, year
+    HAVING SUM(carbon_footprint_pcf) > 0
 ),
-Emission_Change AS (
+min_max AS (
     SELECT 
         industry_group,
-        year,
-        total_pcf,
-        LAG(total_pcf) OVER (PARTITION BY industry_group ORDER BY year) AS last_year_pcf,
-        (total_pcf - LAG(total_pcf) OVER (PARTITION BY industry_group ORDER BY year)) AS absolute_change,
-        ((total_pcf - LAG(total_pcf) OVER (PARTITION BY industry_group ORDER BY year)) 
-         / NULLIF(LAG(total_pcf) OVER (PARTITION BY industry_group ORDER BY year), 0)) * 100 AS percent_change
-    FROM Yearly_Emissions
+        FIRST_VALUE(year) OVER (PARTITION BY industry_group ORDER BY pcf ASC) AS min_pcf_year,
+        MIN(pcf) OVER (PARTITION BY industry_group) AS min_pcf,
+        FIRST_VALUE(year) OVER (PARTITION BY industry_group ORDER BY pcf DESC) AS max_pcf_year,
+        MAX(pcf) OVER (PARTITION BY industry_group) AS max_pcf
+    FROM pivot_pcf
+),
+total_change AS (
+    SELECT DISTINCT industry_group, max_pcf_year, max_pcf, min_pcf_year, min_pcf,
+        CASE WHEN min_pcf_year < max_pcf_year then max_pcf - min_pcf
+	         WHEN min_pcf_year > max_pcf_year then min_pcf - max_pcf
+	         ELSE 0
+	    END AS pcf_change
+    FROM min_max
 )
-SELECT 
-    industry_group,
-    MIN(year) AS start_year,
-    MAX(year) AS end_year,
-    MIN(total_pcf) AS min_pcf,
-    MAX(total_pcf) AS max_pcf,
-    (MAX(total_pcf) - MIN(total_pcf)) AS total_change_pcf,
-    ((MAX(total_pcf) - MIN(total_pcf)) / NULLIF(MAX(total_pcf), 0)) * 100 AS total_percent_change
-FROM Emission_Change
-GROUP BY industry_group
-ORDER BY total_percent_change DESC
-LIMIT 10
+SELECT *,	   
+	   CASE 
+          WHEN pcf_change > 0 THEN 'Increase 📈'
+          WHEN pcf_change < 0 THEN 'Decrease 📉'
+          ELSE 'No Change ➡️'
+       END AS trend
+FROM total_change
+ORDER BY pcf_change
 `
 
 **Result:**
-| industry_group                           | start_year | end_year | min_pcf | max_pcf | total_change_pcf | total_percent_change | 
-| ---------------------------------------: | ---------: | -------: | ------: | ------: | ---------------: | -------------------: | 
-| "Food, Beverage & Tobacco"               | 2013       | 2017     | 0       | 100289  | 100289           | 100.0000             | 
-| Software & Services                      | 2013       | 2017     | 6       | 22856   | 22850            | 99.9737              | 
-| Food & Staples Retailing                 | 2014       | 2016     | 2       | 773     | 771              | 99.7413              | 
-| Technology Hardware & Equipment          | 2013       | 2017     | 1566    | 167361  | 165795           | 99.0643              | 
-| Capital Goods                            | 2013       | 2017     | 3505    | 94949   | 91444            | 96.3085              | 
-| Energy                                   | 2013       | 2016     | 750     | 10024   | 9274             | 92.5180              | 
-| Semiconductors & Semiconductor Equipment | 2014       | 2016     | 4       | 50      | 46               | 92.0000              | 
-| Automobiles & Components                 | 2013       | 2016     | 130189  | 1404833 | 1274644          | 90.7328              | 
-| Commercial & Professional Services       | 2013       | 2017     | 477     | 2890    | 2413             | 83.4948              | 
-| Media                                    | 2013       | 2016     | 1808    | 9645    | 7837             | 81.2545              | 
+| industry_group                                                         | max_pcf_year | max_pcf | min_pcf_year | min_pcf | pcf_change | trend        | 
+| ---------------------------------------------------------------------: | -----------: | ------: | -----------: | ------: | ---------: | -----------: | 
+| Technology Hardware & Equipment                                        | 2014         | 167361  | 2016         | 1566    | -165795    | Decrease 📉  | 
+| Media                                                                  | 2013         | 9645    | 2016         | 1808    | -7837      | Decrease 📉  | 
+| Consumer Durables & Apparel                                            | 2014         | 3280    | 2016         | 1162    | -2118      | Decrease 📉  | 
+| Food & Staples Retailing                                               | 2014         | 773     | 2016         | 2       | -771       | Decrease 📉  | 
+| Semiconductors & Semiconductor Equipment                               | 2014         | 50      | 2016         | 4       | -46        | Decrease 📉  | 
+| Retailing                                                              | 2014         | 19      | 2015         | 11      | -8         | Decrease 📉  | 
+| "Mining - Iron, Aluminum, Other Metals"                                | 2015         | 8181    | 2015         | 8181    | 0          | No Change ➡️ | 
+| Containers & Packaging                                                 | 2015         | 2988    | 2015         | 2988    | 0          | No Change ➡️ | 
+| Trading Companies & Distributors and Commercial Services & Supplies    | 2015         | 239     | 2015         | 239     | 0          | No Change ➡️ | 
+| "Consumer Durables, Household and Personal Products"                   | 2015         | 931     | 2015         | 931     | 0          | No Change ➡️ | 
+| Chemicals                                                              | 2015         | 62369   | 2015         | 62369   | 0          | No Change ➡️ | 
+| Electrical Equipment and Machinery                                     | 2015         | 9801558 | 2015         | 9801558 | 0          | No Change ➡️ | 
+| Gas Utilities                                                          | 2015         | 122     | 2015         | 122     | 0          | No Change ➡️ | 
+| Utilities                                                              | 2016         | 122     | 2016         | 122     | 0          | No Change ➡️ | 
+| "Textiles, Apparel, Footwear and Luxury Goods"                         | 2015         | 387     | 2015         | 387     | 0          | No Change ➡️ | 
+| Semiconductors & Semiconductors Equipment                              | 2015         | 3       | 2015         | 3       | 0          | No Change ➡️ | 
+| Tires                                                                  | 2015         | 2022    | 2015         | 2022    | 0          | No Change ➡️ | 
+| "Forest and Paper Products - Forestry, Timber, Pulp and Paper, Rubber" | 2015         | 8909    | 2015         | 8909    | 0          | No Change ➡️ | 
+| Food & Beverage Processing                                             | 2015         | 141     | 2015         | 141     | 0          | No Change ➡️ | 
+| Tobacco                                                                | 2015         | 1       | 2015         | 1       | 0          | No Change ➡️ | 
+| Telecommunication Services                                             | 2014         | 183     | 2013         | 52      | 131        | Increase 📈  | 
+| Commercial & Professional Services                                     | 2016         | 2890    | 2014         | 477     | 2413       | Increase 📈  | 
+| "Pharmaceuticals, Biotechnology & Life Sciences"                       | 2014         | 40215   | 2013         | 32271   | 7944       | Increase 📈  | 
+| Energy                                                                 | 2016         | 10024   | 2013         | 750     | 9274       | Increase 📈  | 
+| Software & Services                                                    | 2015         | 22856   | 2013         | 6       | 22850      | Increase 📈  | 
+| Capital Goods                                                          | 2017         | 94949   | 2015         | 3505    | 91444      | Increase 📈  | 
+| "Food, Beverage & Tobacco"                                             | 2016         | 100289  | 2014         | 2685    | 97604      | Increase 📈  | 
+| Materials                                                              | 2017         | 213137  | 2014         | 75678   | 137459     | Increase 📈  | 
+| Automobiles & Components                                               | 2016         | 1404833 | 2013         | 130189  | 1274644    | Increase 📈  | 
 
 **Insights:**
-The data reveals that the "Food, Beverage & Tobacco" industry achieved the most significant reduction in carbon footprints (PCFs), reaching a 100% decrease from its highest recorded value. Similarly, Software & Services and Food & Staples Retailing industries also saw remarkable declines, with reductions of over 99%. Other sectors, such as Technology Hardware & Equipment and Capital Goods, followed closely with reductions exceeding 96%. Notably, the Automobiles & Components sector, despite having one of the highest initial PCFs, managed a substantial 90.73% decrease. Overall, these insights suggest that multiple industries have made significant strides in lowering their carbon emissions over time.
+The industries that have shown the most significant decrease in carbon footprints (PCFs) over time include "Technology Hardware & Equipment" (a decline of 165,795 from 2014 to 2016), "Media" (a decrease of 7,837 from 2013 to 2016), "Consumer Durables & Apparel" (a drop of 2,118 from 2014 to 2016), and "Food & Staples Retailing" (a reduction of 771 from 2014 to 2016). This suggests that industries in technology, media, retail, and electronics manufacturing have made significant improvements in optimizing production processes and supply chains to reduce carbon emissions.
 
 ## Conclusion
+- The data highlights the significant carbon footprint associated with wind turbine production, particularly from large-scale models manufactured by Gamesa Corporación Tecnológica, S.A. Despite their high emissions during production, these turbines provide long-term environmental benefits through clean energy generation. The automobile sector, led by companies such as Daimler AG and Volkswagen AG, also contributes substantially to emissions due to vehicle manufacturing and fuel consumption. Additionally, industrial equipment and construction materials, including electric motors and retaining walls, add to the overall carbon footprint, emphasizing the need for sustainable industrial solutions.
 
+- Spain emerges as the largest emitter, mainly due to its wind turbine manufacturing industry, which underscores the high embedded emissions in producing renewable energy equipment. However, a drastic reduction in emissions after 2015 suggests significant shifts in manufacturing practices, policies, or reporting mechanisms. Notably, industries such as Technology Hardware, Media, Consumer Durables & Apparel, and Food & Staples Retailing have successfully reduced their carbon footprints over time, reflecting improvements in production efficiency and supply chain sustainability.
 
-
-
-
-
-
+- Overall, the findings emphasize the critical need for a balanced approach—accelerating renewable energy adoption while optimizing manufacturing processes to minimize initial carbon emissions. Sustainable transportation, greener industrial solutions, and continued advancements in low-carbon materials are essential to mitigating environmental impact and transitioning towards a more sustainable future.🌍
 
