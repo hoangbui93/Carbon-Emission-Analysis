@@ -17,7 +17,7 @@ The dataset consists of 4 tables containing information regarding carbon emissio
 
 
 ## Carbon Emission Analysis
-### Which products contribute the most to carbon emissions?
+### 1. Which products contribute the most to carbon emissions?
 Get top 10 products contribute the most to carbon emissions
 
 **SQL:**
@@ -46,7 +46,7 @@ limit 10
 **Insights:**
 The data reveals that wind turbine production generates high CO2 emissions, with larger models like the G128 5MW (3.7 millions) and G132 5MW (3.2 millions) having the biggest footprint, though their long-term clean energy benefits outweigh initial emissions. Smaller turbines, like the G90 2MW (1.25 millions), produce significantly less. Traditional vehicles, such as the Land Cruiser Prado and Audi A6, contribute around 100,000 – 190,000 over their lifecycle, highlighting the environmental impact of fossil-fuel cars. Infrastructure projects, like retaining walls (167,000) and electric motors (160,655), also have substantial emissions, showing the need for greener construction and industrial solutions. The insights emphasize the importance of renewable energy adoption, low-emission transportation, and sustainable materials to reduce environmental impact.🌍
 
-### What are the industry groups of these products?
+### 2. What are the industry groups of these products?
 These products belong to various industry groups, each of these industries plays a significant role in global carbon emissions.
 
 **SQL:**
@@ -81,7 +81,7 @@ from
 **Insights:**
 The top CO2-emitting products fall into four key industry groups: Electrical Equipment and Machinery, Automobiles & Components, Capital Goods, and Materials. Wind turbines produce the highest emissions during production, but they will have long-term clean energy benefits. Automobiles, including the Land Cruiser Prado, Audi A6, and GM vehicles, generate substantial emissions due to fuel consumption and production processes. Industrial equipment like electric motors and construction materials such as retaining wall structures also have significant carbon footprints, mainly from material extraction and heavy industrial processing.🌱
 
-### What are the industries with the highest contribution to carbon emissions?
+### 3. What are the industries with the highest contribution to carbon emissions?
 Get top 10 industry_groups contribute the most to carbon emissions
 
 **SQL:**
@@ -111,7 +111,7 @@ limit 10
 **Insights:**
 The industries with the highest CO2 emissions are Electrical Equipment and Machinery (9.8 millions), Automobiles & Components (2.58 millions), and Materials (577,595). The Electrical Equipment sector, driven by wind turbine production, has the largest footprint due to high material and manufacturing energy demands. The Automobile industry contributes significantly through vehicle production and fuel consumption, while Materials, including construction infrastructure, add further emissions from steel and concrete production. In contrast, industries like Technology Hardware, Pharmaceuticals, and Software have lower emissions, reflecting their less material-intensive production.🌍
 
-### What are the companies with the highest contribution to carbon emissions?
+### 4. What are the companies with the highest contribution to carbon emissions?
 Get top 5 companies contribute the most to carbon emissions
 
 **SQL:**
@@ -135,7 +135,7 @@ limit 5`
 **Insights:**
 The top five companies contributing the most to carbon emissions are Gamesa Corporación Tecnológica, S.A. (9.78 millions), Daimler AG (1.59 millions), Volkswagen AG (655,960), Mitsubishi Gas Chemical Company, Inc. (212,016), and Hino Motors, Ltd. (191,687). Gamesa, a wind turbine manufacturer, leads significantly due to high emissions from large-scale turbine production, despite its role in renewable energy. Daimler and Volkswagen, major automotive companies, contribute heavily from vehicle manufacturing and fuel-related emissions. Mitsubishi Gas Chemical and Hino Motors add to industrial and transportation emissions through chemical production and commercial vehicle manufacturing.🌱
 
-### What are the countries with the highest contribution to carbon emissions?
+### 5. What are the countries with the highest contribution to carbon emissions?
 Get top 5 countries contribute the most to carbon emissions
 
 **SQL:**
@@ -193,7 +193,7 @@ limit 10`
 **Insights:**
 Spain is the highest contributor to carbon emissions, with a significantly larger footprint (9,786,130) compared to other countries. A deep dive into Spain's emissions sources reveals that Gamesa Corporación Tecnológica, S.A. is the primary contributor, with its wind turbine products collectively accounting for the vast majority of Spain’s emissions (over 9.7 million PCF). This suggests that renewable energy equipment manufacturing, particularly wind turbines, has a substantial carbon footprint in the production phase. Other industries in Spain, such as Energy, Chemicals, Food & Beverage,... contribute relatively minor amounts to total emissions. While the presence of clean energy manufacturing is prominent, its high carbon footprint highlights the embedded emissions in producing large-scale wind energy equipment.
 
-### What is the trend of carbon footprints (PCFs) over the years?
+### 6. What is the trend of carbon footprints (PCFs) over the years?
 Carbon footprint (PCF) trend changes year over year
 
 **SQL:**
@@ -249,7 +249,7 @@ limit 10`
 
 - As discussed above, Spanish wind turbine manufacturing, specifically from Gamesa Corporación Tecnológica, SA, was the main contributor to the increase in emissions in 2015. In addition, the German automotive industry, particularly the production of luxury vehicles by Daimler AG, also contributed to emissions, albeit on a significantly smaller scale than wind turbine manufacturing. This highlights that renewable energy equipment manufacturing and high-end car manufacturing were the main drivers of emissions in 2015, before emissions fell sharply in subsequent years.
 
-### Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
+### 7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 Get industry groups has demonstrated the most notable decrease in carbon footprints (PCFs)
 
 **SQL:**
