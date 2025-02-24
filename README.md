@@ -13,7 +13,7 @@ Our dataset is compiled from publicly available data from nature.com and encompa
 ## Data Structure
 The dataset consists of 4 tables containing information regarding carbon emissions generated during the production of goods.
 
-![Alt text](https://lms.swisscoding.edu.vn/pluginfile.php/16364/mod_label/intro/Database%20diagram.png)
+<img src="[URL_HOẶC_ĐƯỜNG_DẪN_TƯƠNG_ĐỐI](https://lms.swisscoding.edu.vn/pluginfile.php/16364/mod_label/intro/Database%20diagram.png)" width="400">
 
 ## Carbon Emission Analysis
 ### Which products contribute the most to carbon emissions?
